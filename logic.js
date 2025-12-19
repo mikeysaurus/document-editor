@@ -207,7 +207,7 @@ async function toggleTemplatePicker() {
 
 // Fetch templates from local submodule
 async function fetchTemplates() {
-  const baseUrl = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '') + '/starlight-templates/starlight/';
+  const baseUrl = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '') + '/templates-upstream/starlight/';
   
   try {
     const response = await fetch('./template-list.json');

@@ -22,7 +22,7 @@ function scanDirectory(dir, basePath = '') {
   return templates;
 }
 
-const templateDir = path.join(__dirname, 'starlight-templates', 'starlight');
+const templateDir = path.join(__dirname, 'templates-upstream', 'starlight');
 if (fs.existsSync(templateDir)) {
   const templates = scanDirectory(templateDir);
   
