@@ -22,7 +22,7 @@ function scanDirectory(dir, basePath = '') {
   return templates;
 }
 
-const templateDir = path.join(__dirname, 'templates-upstream', 'Main', 'RMC14');
+const templateDir = path.join(__dirname, 'starlight-templates', 'main');
 if (fs.existsSync(templateDir)) {
   const templates = scanDirectory(templateDir);
   
