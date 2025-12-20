@@ -223,3 +223,23 @@ button:hover {
 .template-button:hover {
     background: light-dark(rgba(74,144,226,0.2), rgba(68, 68, 68, 0.5));
 }
+
+.button-formatting {
+    background-color: #e0e0e0 !important;
+    color: #222 !important;
+}
+
+.button-headers {
+    background-color: #a9a9a9 !important;
+    color: #222 !important;
+}
+
+.button-colors {
+    background-color: #ff7c7c !important;
+    color: #222 !important;
+}
+
+.button-templates {
+    background-color: #7cb9ff !important;
+    color: #222 !important;
+}

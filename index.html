@@ -13,22 +13,22 @@
 <body>
   <div id="toolbar">
     <!-- buttons… -->
-    <button onclick="insertTag('bold')">Bold</button>
-    <button onclick="insertTag('italic')">Italic</button>
-    <button onclick="insertTag('bolditalic')">Bold Italic</button>
-    <button onclick="insertTag('mono')">Monospace</button>
-    <button onclick="insertTag('head=1')">Header 1</button>
-    <button onclick="insertTag('head=2')">Header 2</button>
-    <button onclick="insertTag('head=3')">Header 3</button>
-    <button onclick="toggleColorPicker()">Color Picker</button>
-    <button onclick="insertHexColor()">Hex Color</button>
-    <button onclick="insertTag('bullet')">Bullet</button>
+    <button class="button-formatting" onclick="insertTag('bold')">Bold</button>
+    <button class="button-formatting" onclick="insertTag('italic')">Italic</button>
+    <button class="button-formatting" onclick="insertTag('bolditalic')">Bold Italic</button>
+    <button class="button-formatting" onclick="insertTag('bullet')">Bullet</button>
     <button onclick="centerText()">Center Text</button>
+    <button onclick="insertTag('mono')">Monospace</button>
+    <button class="button-headers" onclick="insertTag('head=1')">Header 1</button>
+    <button class="button-headers" onclick="insertTag('head=2')">Header 2</button>
+    <button class="button-headers" onclick="insertTag('head=3')">Header 3</button>
+    <button class="button-colors" onclick="toggleColorPicker()">Color Picker</button>
+    <button class="button-colors" onclick="insertHexColor()">Hex Color</button>
     <button onclick="document.getElementById('file-input').click()">Import .txt</button>
     <input type="file" id="file-input" accept=".txt" style="display:none">
     <button onclick="saveTextAsFile()">Save as .txt</button>
     <button onclick="saveRenderAsImage()">Save as Image</button>
-    <button onclick="toggleTemplatePicker()">Templates</button>
+    <button class="button-templates" onclick="toggleTemplatePicker()">Templates</button>
 
   </div>
 
@@ -45,7 +45,8 @@
         <div class="image-container">
             <p class="image-text">Originally made by Simon / Big Dave / Fred Blehurst & Tunguso4ka</p>
             <p class="image-text">Edited by mikeysaurus for the Starlight community</p>
-            <p class="image-text">Find the GitHub repo here: https://github.com/mikeysaurus/document-editor</p>
+            <p class="image-text">Find the GitHub repo here: <a href="https://github.com/mikeysaurus/document-editor" target="_blank">https://github.com/mikeysaurus/document-editor</a></p>
+            <p class="image-text">Want to add to the templates? Make a PR here: <a href="https://github.com/mikeysaurus/paperwork" target="_blank">https://github.com/mikeysaurus/paperwork</a></p>
         </div>
     </div>
 
