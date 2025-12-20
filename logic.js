@@ -182,28 +182,15 @@ document.addEventListener('keydown', ev=>{
 // ─── TEMPLATE PICKER ──────────────────────────────────────────
 let templateCache = null;
 
-async function toggleTemplatePicker() {
+// On page load, fetch and render templates immediately
+window.addEventListener('DOMContentLoaded', async () => {
   const picker = document.getElementById('template-picker');
-  if (picker.style.display === 'block') {           // hide
-    picker.style.display = 'none';
-    return;
-  }
-
-  // 1) first-time fetch?
-  if (!templateCache) {
-    picker.innerHTML = 'loading…';
-    templateCache = await fetchTemplates();
-  }
-
-  // 2) build / rebuild the tree every time (cheap)
+  picker.innerHTML = 'loading…';
+  templateCache = await fetchTemplates();
   picker.innerHTML = buildTemplateTree(templateCache);
   picker.style.display = 'block';
-
-  // position next to toolbar
-  const tb = document.getElementById('toolbar').getBoundingClientRect();
-  picker.style.top  = `${tb.top + 10}px`;
-  picker.style.left = `${tb.right + 10}px`;
-}
+  picker.style.position = 'static'; // Ensure it's not absolutely positioned
+});
 
 // Fetch templates from local submodule
 async function fetchTemplates() {
@@ -259,7 +246,7 @@ async function loadTemplate(rawUrl) {
     const ed  = document.getElementById('editor');
     ed.value  = txt;
     updateRender();
-    document.getElementById('template-picker').style.display='none';
+    // No longer hide the template picker
   } catch (e) {
     alert('Failed to load template ☹');
   }
@@ -269,9 +256,7 @@ async function loadTemplate(rawUrl) {
 (() => {
   // cache the DOM nodes we care about once:
   const colorBtn   = document.querySelector('button[onclick^="toggleColorPicker"]');
-  const templateBtn= document.querySelector('button[onclick^="toggleTemplatePicker"]');
   const colorPick  = document.getElementById('color-picker');
-  const templatePick = document.getElementById('template-picker');
 
   // helper: is the click inside a given element?
   function inside(node, target) { return node && target && node.contains(target); }
@@ -283,11 +268,7 @@ async function loadTemplate(rawUrl) {
         !inside(colorPick, t) && !inside(colorBtn, t)) {
       colorPick.style.display = 'none';
     }
-    // Template-picker
-    if (templatePick.style.display !== 'none' &&
-        !inside(templatePick, t) && !inside(templateBtn, t)) {
-      templatePick.style.display = 'none';
-    }
+    // Template-picker: no longer hide on click-away
   });
 })();
 
@@ -312,6 +293,7 @@ function updateRender() {
                 output += '• ';
             } else {
                 let spanClass = '', spanStyle = '';
+                // let spanStyle = '';
                 switch (tag) {
                     case 'bold':
                         output += '<b>'; stack.push({tag: 'bold'}); break;
@@ -405,3 +387,4 @@ function updateRender() {
 // --- bootstrap ---
 initializeColorPicker();
 updateRender();
+
