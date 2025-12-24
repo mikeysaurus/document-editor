@@ -26,13 +26,14 @@ body {
 /* Toolbar styles */
 #toolbar {
     display: flex;
+    /*align-items: flex-start;*/
     flex-direction: column;
     gap: 10px;
     padding: 10px;
     background-color: light-dark(#eeeeee, #333333);
     border-right: 1px solid light-dark(#ccc, #555555);
     color: light-dark(#000, #ffffff);
-    width: 150px;
+    width: 280px;
     box-sizing: border-box;
 }
 
@@ -180,6 +181,7 @@ button {
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     box-shadow: none; /* Flat, no shadow */
+    width: 100%;
 }
 
 button:hover {
@@ -187,16 +189,20 @@ button:hover {
     color: light-dark(#000, #ffffff); /* Darker text for hover */
 }
 
+.multiple-buttons {
+    display: flex;
+    gap: 5px;
+}
+
 #template-picker {
     display: none;
-    position: absolute;
-    min-width: 320px;
-    max-height: 400px;
+    flex: 1 1 auto;
+    position: static;
+    min-width: 220px;
+    min-height: 400px;
     overflow: auto;
-    padding: 12px;
     border: 2px solid light-dark(rgb(74, 144, 226), rgb(85, 85, 85));
     background: linear-gradient(135deg, light-dark(rgb(248, 249, 250), rgb(68, 68, 68)) 0%, light-dark(rgb(233, 236, 239), rgb(30, 30, 30)) 100%);
-    border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 24px;
     z-index: 1001;
     font-family: "Segoe UI", sans-serif;
@@ -225,18 +231,30 @@ button:hover {
 }
 
 .button-formatting {
-    background-color: #e0e0e0 !important;
+    background-color: #cecece !important;
     color: #222 !important;
 }
 
+.button-formatting:hover {
+    background-color: #f3f3f3 !important;
+}
+
 .button-headers {
-    background-color: #a9a9a9 !important;
+    background-color: #969696 !important;
     color: #222 !important;
+}
+
+.button-headers:hover {
+    background-color: #cbcbcb !important;
 }
 
 .button-colors {
     background-color: #ff7c7c !important;
     color: #222 !important;
+}
+
+.button-colors:hover {
+    background-color: #ff9e9e !important;
 }
 
 .button-templates {
