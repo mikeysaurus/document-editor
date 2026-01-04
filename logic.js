@@ -272,6 +272,27 @@ async function loadTemplate(rawUrl) {
   });
 })();
 
+// Map special tags to their image sources and sizes
+const imageTagMap = {
+    '[CClogo]': { src: 'assets/CClogo.png', alt: 'CClogo', width: 120, height: 60 },
+    '[NanotrasenLogo]': { src: 'assets/Nanotrasen_Logo.png', alt: 'NanotrasenLogo', width: 120, height: 60 },
+    '[SyndieLogo]': { src: 'assets/Syndie_Logo.png', alt: 'SyndieLogo', width: 120, height: 60 },
+};
+
+/**
+ * Replaces special tags in the text with corresponding <img> elements.
+ * @param {string} text - The input text containing image tags.
+ * @returns {string} - The HTML string with images embedded.
+ */
+function embedImages(text) {
+    let html = text;
+    for (const [tag, { src, alt, width, height }] of Object.entries(imageTagMap)) {
+        // Replace all occurrences of the tag with an <img> element
+        html = html.split(tag).join(`<img src="${src}" alt="${alt}" width="${width}" height="${height}" class="embedded-logo" />`);
+    }
+    return html;
+}
+
 // ─── updateRender ───────────────────────────────────────────────────────────
 function updateRender() {
     const editorContent = document.getElementById('editor').value;
@@ -283,7 +304,7 @@ function updateRender() {
 
     tokens.forEach(tok => {
         const openMatch = tok.match(/^\[([a-z]+)(?:=([^\]]+))?\]$/i);
-        const closeMatch = tok.match(/^\[\/([a-z]+)\]$/i);
+        const closeMatch = tok.match(/^\/[a-z]+\]$/i);
 
         if (openMatch) {
             const tag = openMatch[1];
@@ -293,7 +314,6 @@ function updateRender() {
                 output += '• ';
             } else {
                 let spanClass = '', spanStyle = '';
-                // let spanStyle = '';
                 switch (tag) {
                     case 'bold':
                         output += '<b>'; stack.push({tag: 'bold'}); break;
@@ -306,10 +326,10 @@ function updateRender() {
                     case 'mono':
                         output += '<span class="monospace">'; stack.push({tag: 'mono'}); break;
                     case 'color':
-                    spanStyle = `color:${param}`;
-                    output   += `<span style="${spanStyle}">`;
-                    stack.push({ tag: 'color', param });   // ← keep the colour for later re-open
-                    break;
+                        spanStyle = `color:${param}`;
+                        output   += `<span style="${spanStyle}">`;
+                        stack.push({ tag: 'color', param });
+                        break;
                     case 'head':
                         const headerSize = Math.ceil(SS14_DEFAULT_SIZE * 2 / Math.sqrt(parseInt(param)));
                         const headerWeight = param == 1 ? 'bold' : param == 2 ? '600' : '500';
@@ -362,7 +382,8 @@ function updateRender() {
             }
 
         } else {
-            output += tok
+            // Embed images in the text
+            output += embedImages(tok)
                 .replace(/\\\[/g, '[')
                 .replace(/\\\]/g, ']')
                 .replace(/&/g, '&amp;')
@@ -387,4 +408,3 @@ function updateRender() {
 // --- bootstrap ---
 initializeColorPicker();
 updateRender();
-
