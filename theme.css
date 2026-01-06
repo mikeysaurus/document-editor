@@ -210,13 +210,15 @@ button:hover {
     backdrop-filter: blur(10px); top: 10px; left: 160px;
 }
 
-.template-title {
+.template-folder-title {
     font-weight:bold;
     color: light-dark(#34495e, #B0C2D4);
     font-size:14px;
+    cursor: pointer;
+    user-select: none;
 }
 
-.template-button {
+.template-entry {
     cursor:pointer;
     padding:4px 8px;
     margin:2px 0;
@@ -226,7 +228,7 @@ button:hover {
     color: light-dark(#2c3e50, #CAD6E2);
 }
 
-.template-button:hover {
+.template-entry:hover {
     background: light-dark(rgba(74,144,226,0.2), rgba(68, 68, 68, 0.5));
 }
 
@@ -260,4 +262,9 @@ button:hover {
 .button-templates {
     background-color: #7cb9ff !important;
     color: #222 !important;
+}
+
+/* Collapsible folder logic */
+.collapsed > div:not(.template-folder-title) {
+    display: none !important;
 }
