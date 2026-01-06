@@ -190,6 +190,17 @@ window.addEventListener('DOMContentLoaded', async () => {
   picker.innerHTML = buildTemplateTree(templateCache);
   picker.style.display = 'block';
   picker.style.position = 'static'; // Ensure it's not absolutely positioned
+
+  // Create collapsible logic for folders
+  picker.querySelectorAll('.template-folder-title').forEach(title => {
+    title.style.cursor = 'pointer';
+    title.addEventListener('click', function(event) {
+      // Only toggle if clicking the folder, not a child entry/item
+      if (event.target !== title) return;
+      const parent = title.parentElement;
+      parent.classList.toggle('collapsed');
+    });
+  });
 });
 
 // Fetch templates from local submodule
@@ -226,11 +237,12 @@ function buildTemplateTree(files) {
   function render(node, indent='', level=0) {
     return Object.entries(node).map(([name,val])=>{
       if (typeof val === 'string') {
-        return `<div class="template-button" onclick="loadTemplate('${val.replace(/'/g,"\\'")}')">
+        return `<div class="template-entry" onclick="loadTemplate('${val.replace(/'/g,"\\'")}')">
                   ${indent}📄 <span style="font-weight:500">${name}</span></div>`;
       }
-      return `<div style="margin:${level*2}px 0;padding:4px 0;">
-                <div class="template-title">
+      // All folders start collapsed, for a clean view of folder hierarchy
+      return `<div class="collapsed" style="margin:${level*2}px 0;padding:4px 0;">
+                <div class="template-folder-title">
                   ${indent}📂 ${name}</div>
                 <div style="margin-left:16px;">${render(val, indent+'  ', level+1)}</div>
               </div>`;
