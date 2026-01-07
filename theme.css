@@ -210,6 +210,16 @@ button:hover {
     backdrop-filter: blur(10px); top: 10px; left: 160px;
 }
 
+.template-folder-group {
+    padding:4px 0;
+    /*there is also a margin tag, but thats dependent on 'level' from the loop in logic.js*/
+}
+
+.template-folder-group:hover {
+    background: light-dark(rgba(176, 199, 232, 0.2),
+    rgba(92, 92, 92, 0.5));
+}
+
 .template-folder-title {
     font-weight:bold;
     color: light-dark(#34495e, #B0C2D4);
@@ -218,18 +228,21 @@ button:hover {
     user-select: none;
 }
 
+.template-folder-title:hover {
+    background: light-dark(rgba(74,144,226,0.2), rgba(131, 131, 131, 0.5));
+}
+
 .template-entry {
     cursor:pointer;
     padding:4px 8px;
     margin:2px 0;
     border-radius:4px;
     transition:all 0.2s;
-    background: light-dark(rgba(74,144,226,0.1), rgba(68, 68, 68, 0.1));
-    color: light-dark(#2c3e50, #CAD6E2);
+    background: light-dark(rgba(74,144,226,0.1), rgba(68, 68, 68, 0.1)); color: light-dark(#2c3e50, #CAD6E2);
 }
 
 .template-entry:hover {
-    background: light-dark(rgba(74,144,226,0.2), rgba(68, 68, 68, 0.5));
+    background: light-dark(rgba(74,144,226,0.2), rgba(131, 131, 131, 0.5));
 }
 
 .button-formatting {

@@ -241,7 +241,7 @@ function buildTemplateTree(files) {
                   ${indent}📄 <span style="font-weight:500">${name}</span></div>`;
       }
       // All folders start collapsed, for a clean view of folder hierarchy
-      return `<div class="collapsed" style="margin:${level*2}px 0;padding:4px 0;">
+      return `<div class="collapsed template-folder-group" style="margin:${level*2}px 0;">
                 <div class="template-folder-title">
                   ${indent}📂 ${name}</div>
                 <div style="margin-left:16px;">${render(val, indent+'  ', level+1)}</div>
