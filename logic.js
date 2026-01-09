@@ -296,6 +296,23 @@ function updateRender() {
     tokens.forEach(tok => {
         const openMatch = tok.match(/^\[([a-z]+)(?:=([^\]]+))?\]$/i);
         const closeMatch = tok.match(/^\[\/([a-z]+)\]$/i);
+        //const openMatch = tok.match(/^\[([a-z]+)(?:=([^"]+))?\]$/i);
+        //const closeMatch = tok.match(/^\/[([a-z]+)\]$/i);
+
+        // Image tag handling
+        // janky way to do it but it works for now
+        if (tok === '[CClogo]') {
+            output += '<img src="assets/CClogo.png" alt="CC Logo" class="embedded-logo"/>';
+            return;
+        }
+        if (tok === '[logo]') {
+            output += '<img src="assets/Nanotrasen_Logo.png" alt="Nanotrasen Logo" class="embedded-logo"/>';
+            return;
+        }
+        if (tok === '[Slogo]') {
+            output += '<img src="assets/Syndie_Logo.png" alt="Syndicate Logo" class="embedded-logo"/>';
+            return;
+        }
 
         if (openMatch) {
             const tag = openMatch[1];
@@ -399,4 +416,3 @@ function updateRender() {
 // --- bootstrap ---
 initializeColorPicker();
 updateRender();
-
