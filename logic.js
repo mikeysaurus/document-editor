@@ -301,7 +301,7 @@ function updateRender() {
 
         // Image tag handling
         // janky way to do it but it works for now
-        if (tok === '[CClogo]') {
+        if (tok === '[cclogo]') {
             output += '<img src="assets/CClogo.png" alt="CC Logo" class="embedded-logo"/>';
             return;
         }
@@ -309,7 +309,7 @@ function updateRender() {
             output += '<img src="assets/Nanotrasen_Logo.png" alt="Nanotrasen Logo" class="embedded-logo"/>';
             return;
         }
-        if (tok === '[Slogo]') {
+        if (tok === '[slogo]') {
             output += '<img src="assets/Syndie_Logo.png" alt="Syndicate Logo" class="embedded-logo"/>';
             return;
         }
