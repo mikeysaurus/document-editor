@@ -272,6 +272,15 @@ button:hover {
     background-color: #ff9e9e !important;
 }
 
+.button-logos {
+    background-color: #7b9aff;
+    color: #222 !important;
+}
+
+.button-logos:hover {
+    background-color: #a4b5ff;
+}
+
 .button-templates {
     background-color: #7cb9ff !important;
     color: #222 !important;
