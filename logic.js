@@ -300,6 +300,7 @@ function updateRender() {
         //const closeMatch = tok.match(/^\/[([a-z]+)\]$/i);
 
         // Image tag handling
+        // janky way to do it but it works for now
         if (tok === '[CClogo]') {
             output += '<img src="assets/CClogo.png" alt="CC Logo" class="embedded-logo"/>';
             return;
