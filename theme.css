@@ -281,3 +281,10 @@ button:hover {
 .collapsed > div:not(.template-folder-title) {
     display: none !important;
 }
+
+.embedded-logo {
+    display: inline-block;
+    height: 45%;
+    width: 45%;
+    image-rendering: pixelated;
+}
