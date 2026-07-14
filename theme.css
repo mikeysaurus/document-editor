@@ -169,6 +169,31 @@ body {
     color: light-dark(#333, #ffffff);
 }
 
+.badge-container a {
+    display: inline-block;
+    line-height: 0;
+    text-decoration: none;
+}
+
+.badge-container p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.badge-container img {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.badge-container a img {
+    display: block;
+    margin: 0;
+}
+
 /* Modern flat button styles */
 button {
     background-color: light-dark(#f5f5f5, #444444); /* Flat color */
